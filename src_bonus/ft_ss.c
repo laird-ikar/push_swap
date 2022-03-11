@@ -1,23 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_lstsorted_r.c                                   :+:      :+:    :+:   */
+/*   ft_ss.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bguyot <bguyot@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/11 17:27:04 by bguyot            #+#    #+#             */
-/*   Updated: 2022/03/11 17:27:09 by bguyot           ###   ########.fr       */
+/*   Created: 2022/03/11 17:28:51 by bguyot            #+#    #+#             */
+/*   Updated: 2022/03/11 17:28:56 by bguyot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-include "../include/push_swap.h"
+#include "../includes/push_swap_bonus.h"
 
-int	is_lstsorted_r(t_list *lst)
+void	ft_ss(t_stacks **stk)
 {
-	while (lst && lst->nx)
-	{
-		if (*(long *)lst->cont < *(long *)lst->nx->cont)
-			return (0);
-	}
-	return (1);
+	t_list	**a_ptr;
+	t_list	*a_next;
+	t_list	**b_ptr;
+	t_list	*b_next;
+
+	b_ptr = (*stk)->b;
+	b_next = (*b_ptr)->nx;
+	(*b_ptr)->nx = b_next->nx;
+	b_next->nx = *b_ptr;
+	*b_ptr = b_next;
+	a_ptr = (*stk)->a;
+	a_next = (*a_ptr)->nx;
+	(*a_ptr)->nx = a_next->nx;
+	a_next->nx = *a_ptr;
+	*a_ptr = a_next;
 }

@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   push_swap_bonus.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bguyot <bguyot@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/11 17:19:34 by bguyot            #+#    #+#             */
-/*   Updated: 2022/03/11 17:19:39 by bguyot           ###   ########.fr       */
+/*   Created: 2022/03/11 17:19:28 by bguyot            #+#    #+#             */
+/*   Updated: 2022/03/11 17:19:30 by bguyot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#ifndef PUSH_SWAP_BONUS_H
+# define PUSH_SWAP_BONUS_H
 
 # include "../libft/libft.h"
 
@@ -31,16 +31,6 @@ typedef struct s_stacks {
 	int		*array;
 }			t_stacks;
 
-typedef struct s_trysort
-{
-	int	chk_size;
-	int	nb_chk;
-	int	i;
-	int	j;
-	int	rotate;
-	int	a;
-}		t_trysort;
-
 void	ft_pb(t_stacks **stk);
 void	ft_pa(t_stacks **stk);
 void	ft_ra(t_stacks **stk);
@@ -53,22 +43,8 @@ void	ft_sa(t_stacks **stk);
 void	ft_sb(t_stacks **stk);
 void	ft_ss(t_stacks **stk);
 int		is_lstsorted(t_list *list);
-int		is_lstsorted_r(t_list *list);
-void	stacks_print(t_stacks *stk);
-void	trysort(t_stacks *stk);
-void	trysortparttwo(t_stacks *stk);
-int		minimaze_rotate(t_list *lst, int max);
-int		minimaze_placement(t_list *lst, int to_place);
-int		true_minimaze_rotate(t_list *lst, int max);
-void	trysortmore(t_stacks *stk, size_t size);
-int		ft_lstmaxint(t_list *lst);
-int		closest_divisor(int size);
+void	check_stdin(t_stacks *stk);
 long	ps_atoi(const char *str);
-void	the_while(t_stacks *stk, int a, int *rotate);
-void	final_pa(int rotate, t_stacks *stk);
-void	opti_rotate_b(t_stacks *stk, int a, int *rotate);
-void	do_rb(int *rotate, t_stacks *stk);
-void	do_rrb(int *rotate, t_stacks *stk);
 
 # endif
 

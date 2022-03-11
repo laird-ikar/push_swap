@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_lstsorted_r.c                                   :+:      :+:    :+:   */
+/*   ft_lstminint.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bguyot <bguyot@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/11 17:27:04 by bguyot            #+#    #+#             */
-/*   Updated: 2022/03/11 17:27:09 by bguyot           ###   ########.fr       */
+/*   Created: 2022/03/11 17:24:53 by bguyot            #+#    #+#             */
+/*   Updated: 2022/03/11 17:24:58 by bguyot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-include "../include/push_swap.h"
+#include "libft.h"
 
-int	is_lstsorted_r(t_list *lst)
+int	ft_lstminint(t_list *lst)
 {
-	while (lst && lst->nx)
+	int	min;
+
+	min = 2147483647;
+	while (lst)
 	{
-		if (*(long *)lst->cont < *(long *)lst->nx->cont)
-			return (0);
+		if (min > *(int *)lst->cont)
+		{
+			min = *(int *)lst->cont;
+		}
+		lst = lst->nx;
 	}
-	return (1);
+	return (min);
 }

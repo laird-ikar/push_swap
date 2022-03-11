@@ -1,23 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_lstsorted_r.c                                   :+:      :+:    :+:   */
+/*   ft_pb.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bguyot <bguyot@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/11 17:27:04 by bguyot            #+#    #+#             */
-/*   Updated: 2022/03/11 17:27:09 by bguyot           ###   ########.fr       */
+/*   Created: 2022/03/11 17:26:28 by bguyot            #+#    #+#             */
+/*   Updated: 2022/03/11 17:26:33 by bguyot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-include "../include/push_swap.h"
+#include "../includes/push_swap.h"
 
-int	is_lstsorted_r(t_list *lst)
+void	ft_pb(t_stacks **stk)
 {
-	while (lst && lst->nx)
+	t_list	**a_ptr;
+	t_list	**b_ptr;
+	t_list	*a;
+
+	if (*((*stk)->a) && (*stk)->b)
 	{
-		if (*(long *)lst->cont < *(long *)lst->nx->cont)
-			return (0);
+		a_ptr = (*stk)->a;
+		b_ptr = (*stk)->b;
+		a = *((*stk)->a);
+		*a_ptr = a->nx;
+		a->nx = *b_ptr;
+		*b_ptr = a;
 	}
-	return (1);
+	ft_putendl_fd("pb", 1);
 }

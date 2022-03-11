@@ -6,7 +6,7 @@
 /*   By: bguyot <bguyot@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/23 13:24:47 by bguyot            #+#    #+#             */
-/*   Updated: 2022/03/11 07:24:23 by bguyot           ###   ########.fr       */
+/*   Updated: 2022/03/11 17:31:00 by bguyot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@ typedef struct s_list
 #  define BUFFER_SIZE	42
 # endif
 
+# ifndef T_GNL
+#  define T_GNL
+
 typedef struct s_gnl
 {
 	int		ret;
@@ -41,6 +44,8 @@ typedef struct s_gnl
 	char	buff[BUFFER_SIZE + 2];
 	int		i;
 }			t_gnl;
+
+# endif
 
 int		ft_isspace(char c);
 /* Return true if c is a whitespace, false otherwise */
@@ -59,11 +64,11 @@ int		ft_toupper(int c);
 int		ft_tolower(int c);
 /* Return the lower conterpart of c if c is a upper letter, c otherwise */
 int		ft_strcmp(const char *s1, const char *s2);
-/* Compare the strings s1 and s2, char by char
-** and return the first diffrence (is ascii value) */
+/* Compare the strings s1 and s2, char by char and return the first difference
+** (calculated as unsigned char) */
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 /* Compare the at most n first chars of s1 and s2
-** and return the first diffrence (is ascii value) */
+** and return the first diffrence (calculated as unsigned char) */
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 /* Compare the at most n first bytes of s1 and s2
 ** and return the first diffrence */
@@ -72,19 +77,23 @@ int		ft_atoi(const char *str);
 int		ft_lstsize(t_list *lst);
 /* Return the number of element of the list lst*/
 int		ft_strcontain(char **src, char *tofind);
-/* Return 1 if there is tofind in src, 0 other wise*/
+/* Return 1 if the char * array src contains tofind, 0 otherwise */
 int		ft_tabmin(int *tab, size_t size);
 /* Return the minimum of the array */
 int		ft_tabmax(int *tab, size_t size);
-/* Return the minimum of the array */
-int		ft_tabmed(int *tab, int size);
-/* Return the med of the array */
+/* Return the maximum of the array */
 int		ft_abs(int a);
 /* Return absolute value of a */
 int		ft_lstmaxint(t_list *lst);
-/* Return the maximum value of lst, interpreted as int */
+/* Return int max from t_list*/
 int		ft_lstminint(t_list *lst);
-/* Return the minimum value of lst, interpreted as int */
+/* Return int min from t_list*/
+int		ft_sqrt(int nb);
+/* Return the entiere part of the sqrt of nb */
+int		ft_is_nodoubl(int *tab, int size);
+/* Return 0 if doublons exist, 1 otherwise */
+int		ft_tab_size(char **tab);
+/* Return size of void *tab */
 
 void	ft_bzero(void *s, size_t n);
 /* Fill n byte of memory, at the address of s with 0s */
@@ -110,8 +119,6 @@ void	ft_lstclear(t_list **lst, void (*del)(void *));
 ** DO free the nx element and set the original pointer to NULL */
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 /* Apply f to every element of lst */
-void	ft_sort_int_tab(int *tab, int size);
-/* Sort the the given array of size size */
 
 size_t	ft_strlen(const char *s);
 /* Return the size of s */
@@ -134,11 +141,13 @@ void	*ft_memchr(const void *s, int c, size_t n);
 ** c in the n bytes of memory pointed by s */
 void	*ft_calloc(size_t count, size_t size);
 /* Allocate size byte of memeory and set them to 0
-** (return NULL if allocation fails) */
+** (return NULL is allocation fails) */
 void	*ft_memcat(const void *mem1, const void *mem2,
 			size_t len1, size_t len2);
-/* Allocate and return the contatenation of mem1 and mem2
-** (return NULL if allocation fails)*/
+/* Allocate and return the concatenation of mem1 and mem2
+** (return NULL if allocation fails) */
+void	ft_sort_int_tab(int *tab, int size);
+/* Sort the given array of size size */
 
 char	*ft_strchr(const char *s, int c);
 /* Return the address of the first occurence of c in the string pointed by s */
@@ -173,8 +182,7 @@ char	*ft_ultoa_base(unsigned long nb, char *base);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 /* Allocate and return a string of f(i, s[i]) (NULL if allocation fails) */
 char	*get_next_line(int fd);
-/* Return the nx line of the file described by fd
-** NULL is nothing can be read*/
+/* Return the next line of the file described by fd or NULL if fails */
 
 t_list	*ft_lstnew(void *cont);
 /* Create and return a new list with first element cont, and a NULL nx
@@ -182,12 +190,12 @@ t_list	*ft_lstnew(void *cont);
 t_list	*ft_lstlast(t_list *lst);
 /* Return the lat element of a list */
 t_list	*ft_lstcalendar(const t_list *lst, size_t calendar);
-/* Return the calendarth element of lst */
+/* Return the calendarth element of a list */
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 /* Return the list of the images of lst by f (NULL if allocation fails) */
 
 char	**ft_split(char const *s, char c);
-/* Allocate and return a tab of substring of s
-** , cuting s along c (NULL if allocation fails) */
+/* Allocate and return a NULL-terminated tab of substring
+** of s, cuting s along c (NULL if allocation fails) */
 
 #endif

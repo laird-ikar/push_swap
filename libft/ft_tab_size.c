@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_lstsorted_r.c                                   :+:      :+:    :+:   */
+/*   ft_tab_size.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bguyot <bguyot@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/11 17:27:04 by bguyot            #+#    #+#             */
-/*   Updated: 2022/03/11 17:27:09 by bguyot           ###   ########.fr       */
+/*   Created: 2022/03/11 17:25:25 by bguyot            #+#    #+#             */
+/*   Updated: 2022/03/11 17:25:26 by bguyot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-include "../include/push_swap.h"
+#include "libft.h"
 
-int	is_lstsorted_r(t_list *lst)
+int	ft_tab_size(char **tab)
 {
-	while (lst && lst->nx)
+	int	res;
+
+	res = 0;
+	while (tab[res])
 	{
-		if (*(long *)lst->cont < *(long *)lst->nx->cont)
-			return (0);
+		res++;
 	}
-	return (1);
+	return (res);
 }

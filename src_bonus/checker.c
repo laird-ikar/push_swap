@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bguyot <bguyot@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/11 17:27:45 by bguyot            #+#    #+#             */
-/*   Updated: 2022/03/11 17:27:50 by bguyot           ###   ########.fr       */
+/*   Created: 2022/03/11 17:28:17 by bguyot            #+#    #+#             */
+/*   Updated: 2022/03/11 17:28:22 by bguyot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../includes/push_swap_bonus.h"
 
 static int	init(t_stacks **stk, int n, char *args[]);
 static int	washing_machine(t_stacks *stk, char **split);
@@ -47,7 +47,7 @@ int	main(int ac, char *av[])
 
 static void	main_part2(t_stacks *stk, char **sp)
 {
-	trysort(stk);
+	check_stdin(stk);
 	washing_machine(stk, sp);
 }
 

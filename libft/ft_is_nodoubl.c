@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_lstsorted_r.c                                   :+:      :+:    :+:   */
+/*   ft_is_nodoubl.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bguyot <bguyot@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/11 17:27:04 by bguyot            #+#    #+#             */
-/*   Updated: 2022/03/11 17:27:09 by bguyot           ###   ########.fr       */
+/*   Created: 2022/03/11 17:24:44 by bguyot            #+#    #+#             */
+/*   Updated: 2022/03/11 17:24:49 by bguyot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-include "../include/push_swap.h"
+#include "libft.h"
 
-int	is_lstsorted_r(t_list *lst)
+int	ft_is_nodoubl(int *tab, int size)
 {
-	while (lst && lst->nx)
+	while (--size)
 	{
-		if (*(long *)lst->cont < *(long *)lst->nx->cont)
+		if (*tab == *(tab + 1))
 			return (0);
+		tab++;
 	}
 	return (1);
 }
