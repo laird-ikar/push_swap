@@ -1,40 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_tabmin.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bguyot <bguyot@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/23 13:21:21 by bguyot            #+#    #+#             */
-/*   Updated: 2022/03/08 08:12:17 by bguyot           ###   ########.fr       */
+/*   Created: 2022/03/09 12:16:10 by bguyot            #+#    #+#             */
+/*   Updated: 2022/03/09 12:16:11 by bguyot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+int	ft_tabmin(int *tab, size_t size)
 {
-	int		i;
-	int		sign;
-	long	value;
+	int	res;
 
-	i = 0;
-	sign = 1;
-	value = 0;
-	while (ft_isspace(str[i]))
-		i++;
-	if (str[i] == '+' || str[i] == '-')
+	res = 2147483647;
+	while (size--)
 	{
-		if (str[i++] == '-')
-			sign *= -1;
+		if (res < *tab)
+			res = *tab;
+		tab++;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		value = value * 10 + str[i++] - '0';
-		if (value > 2147483649)
-		{
-			return ((sign == 1) / (0 == 0) * -1);
-		}
-	}
-	return (sign * (int) value);
+	return (res);
 }

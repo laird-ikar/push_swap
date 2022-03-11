@@ -1,40 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_lstmax.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bguyot <bguyot@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/23 13:21:21 by bguyot            #+#    #+#             */
-/*   Updated: 2022/03/08 08:12:17 by bguyot           ###   ########.fr       */
+/*   Created: 2022/03/10 14:26:54 by bguyot            #+#    #+#             */
+/*   Updated: 2022/03/10 14:27:15 by bguyot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+int	ft_lstmaxint(t_list *lst)
 {
-	int		i;
-	int		sign;
-	long	value;
+	int	max;
 
-	i = 0;
-	sign = 1;
-	value = 0;
-	while (ft_isspace(str[i]))
-		i++;
-	if (str[i] == '+' || str[i] == '-')
+	max = -2147483648;
+	while (lst)
 	{
-		if (str[i++] == '-')
-			sign *= -1;
-	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		value = value * 10 + str[i++] - '0';
-		if (value > 2147483649)
+		if (max < *(int *)lst->cont)
 		{
-			return ((sign == 1) / (0 == 0) * -1);
+			max = *(int *)lst->cont;
 		}
+		lst = lst->nx;
 	}
-	return (sign * (int) value);
+	return (max);
 }

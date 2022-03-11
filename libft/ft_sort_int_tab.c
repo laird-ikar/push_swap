@@ -1,40 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_sort_int_tab.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bguyot <bguyot@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/23 13:21:21 by bguyot            #+#    #+#             */
-/*   Updated: 2022/03/08 08:12:17 by bguyot           ###   ########.fr       */
+/*   Created: 2022/03/10 10:36:33 by bguyot            #+#    #+#             */
+/*   Updated: 2022/03/10 10:36:54 by bguyot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+void	ft_sort_int_tab(int *tab, int size)
 {
-	int		i;
-	int		sign;
-	long	value;
+	int	i;
+	int	j;
+	int	temp;
 
-	i = 0;
-	sign = 1;
-	value = 0;
-	while (ft_isspace(str[i]))
-		i++;
-	if (str[i] == '+' || str[i] == '-')
+	j = 0;
+	while (j < size)
 	{
-		if (str[i++] == '-')
-			sign *= -1;
-	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		value = value * 10 + str[i++] - '0';
-		if (value > 2147483649)
+		i = 0;
+		while (i < size - 1 - j)
 		{
-			return ((sign == 1) / (0 == 0) * -1);
+			if (tab [i] > tab[i + 1])
+			{
+				temp = tab [i];
+				tab[i] = tab[i + 1];
+				tab[i + 1] = temp;
+			}
+			i++;
 		}
+		j++;
 	}
-	return (sign * (int) value);
 }

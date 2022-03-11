@@ -1,40 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_memcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bguyot <bguyot@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/23 13:21:21 by bguyot            #+#    #+#             */
-/*   Updated: 2022/03/08 08:12:17 by bguyot           ###   ########.fr       */
+/*   Created: 2022/03/09 07:46:52 by bguyot            #+#    #+#             */
+/*   Updated: 2022/03/09 07:58:03 by bguyot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+void	*ft_memcat(const void *mem1, const void *mem2, size_t len1, size_t len2)
 {
-	int		i;
-	int		sign;
-	long	value;
+	void	*res;
+	void	*ptr;
 
-	i = 0;
-	sign = 1;
-	value = 0;
-	while (ft_isspace(str[i]))
-		i++;
-	if (str[i] == '+' || str[i] == '-')
-	{
-		if (str[i++] == '-')
-			sign *= -1;
-	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		value = value * 10 + str[i++] - '0';
-		if (value > 2147483649)
-		{
-			return ((sign == 1) / (0 == 0) * -1);
-		}
-	}
-	return (sign * (int) value);
+	res = ft_calloc(len1 + len2, 1);
+	if (!res)
+		return (NULL);
+	ptr = res;
+	while (len1--)
+		*(char *)(ptr++) = *(char *)(mem1++);
+	while (len2--)
+		*(char *)(ptr++) = *(char *)(mem2++);
+	return (res);
 }
