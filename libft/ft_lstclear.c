@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bguyot <bguyot@student.42mulhouse.fr>    +#+  +:+       +#+        */
+/*   By: bguyot <bguyot@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/23 10:55:28 by bguyot           #+#    #+#             */
-/*   Updated: 2022/03/04 10:56:31 by bguyot          ###   ########.fr       */
+/*   Created: 2022/02/23 10:55:28 by bguyot            #+#    #+#             */
+/*   Updated: 2022/03/14 10:42:56 by bguyot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 		*lst = (*lst)->nx;
 		ft_lstdelone(tmp, del);
 	}
+	free(lst);
 	lst = NULL;
 }
