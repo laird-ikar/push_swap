@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: bguyot <bguyot@student.42mulhouse.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/02/23 13:24:40 by bguyot            #+#    #+#              #
-#    Updated: 2022/03/11 17:26:08 by bguyot           ###   ########.fr        #
+#    Created: 2022/03/03 08:35:04 by bguyot            #+#    #+#              #
+#    Updated: 2022/03/14 08:03:07 by bguyot           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ ft_lstclear.c ft_lstdelone.c ft_lstadd_back.c ft_lstadd_front.c ft_utoa.c		\
 ft_ultoa_base.c ft_utoa_base.c ft_strcontain.c ft_strcmp.c ft_tabmin.c			\
 ft_tabmax.c ft_abs.c ft_lstcalendar.c ft_memcat.c ft_sort_int_tab.c				\
 ft_lstmaxint.c ft_lstminint.c ft_sqrt.c ft_is_nodoubl.c ft_tab_size.c			\
-get_next_line.c
+get_next_line.c ft_max.c ft_min.c ft_tabmed.c
 OBJS 		= ${SRCS:.c=.o}
 CC			= gcc
 RM			= rm -f

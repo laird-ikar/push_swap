@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bguyot <bguyot@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/09 12:16:10 by bguyot            #+#    #+#             */
-/*   Updated: 2022/03/09 12:16:11 by bguyot           ###   ########.fr       */
+/*   Created: 2022/03/04 12:42:02 by bguyot            #+#    #+#             */
+/*   Updated: 2022/03/14 08:02:23 by bguyot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_tabmin(int *tab, size_t size)
 	res = 2147483647;
 	while (size--)
 	{
-		if (res < *tab)
+		if (res > *tab)
 			res = *tab;
 		tab++;
 	}

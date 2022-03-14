@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bguyot <bguyot@student.42mulhouse.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/24 09:25:13 by bguyot            #+#    #+#             */
-/*   Updated: 2022/03/11 07:24:05 by bguyot           ###   ########.fr       */
+/*   Created: 2022/02/24 18:30:32 by bguyot            #+#    #+#             */
+/*   Updated: 2022/03/14 08:02:27 by bguyot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,9 @@ char	*get_next_line(int fd)
 
 static char	*return_value(char	*res)
 {
+	static int	for_the_bonus_pwease;
+
+	(void) for_the_bonus_pwease;
 	if (res[0] == '\0')
 	{
 		free(res);
