@@ -6,11 +6,16 @@
 /*   By: bguyot <bguyot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 11:19:54 by bguyot            #+#    #+#             */
-/*   Updated: 2023/07/06 09:19:11 by bguyot           ###   ########.fr       */
+/*   Updated: 2023/07/06 10:37:16 by bguyot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/main.h"
+
+void	print_value(void *value)
+{
+	ft_putnbr_fd((int) value, 1);
+}
 
 /**
  *	@brief		Main loop of the program
@@ -31,9 +36,10 @@ int	main(int argc, char *argv[])
 	err = parse(argc, argv, push_swap.stack_a);
 	if (err)
 		error(err, push_swap);
-	normalize(push_swap.stack_a);
-	push_swap.operations = sort(push_swap.stack_a, push_swap.stack_b);
-	optimize(push_swap.operations);
-	print(push_swap.operations);
+	ft_lstiter(*(push_swap.stack_a), print_value);
+	// normalize(push_swap.stack_a);
+	// push_swap.operations = sort(push_swap.stack_a, push_swap.stack_b);
+	// optimize(push_swap.operations);
+	// print(push_swap.operations);
 	tini(push_swap);
 }
