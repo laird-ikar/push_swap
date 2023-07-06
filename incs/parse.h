@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.h                                            :+:      :+:    :+:   */
+/*   parse.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bguyot <bguyot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/06 09:15:02 by bguyot            #+#    #+#             */
-/*   Updated: 2023/07/06 10:40:14 by bguyot           ###   ########.fr       */
+/*   Created: 2023/07/06 09:32:25 by bguyot            #+#    #+#             */
+/*   Updated: 2023/07/06 10:22:02 by bguyot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERROR_H
-# define ERROR_H
+#ifndef PARSE_H
+# define PARSE_H
 
-# include "structures.h"
-# include "init.h"
-
-enum	e_error_code
-{
-	FT_ERR_ALLOCATION = 1,
-	FT_ERR_NOT_A_INT = 2,
-	FT_ERR_DUPLICATE = 3
-};
+# include "error.h"
+# include "../libs/libft/libft.h"
 
 /**
- *	@brief	Print the error message, free push_swap and exit with code
- *	@param	code		The error code
- *	@param	push_swap	The structure to free
+ * @brief	Read the arguments of the program and store them in the stack a
+ * @param	argc	The number of arguments
+ * @param	argv	The argument array
+ * @param	stack_a	The chained list to fill
+ * @return	The according error code (0 if no error)
  */
-void	error(int code, t_pushswap push_swap);
+int	parse(int argc, char *argv[], t_list **stack_a);
 
 #endif
