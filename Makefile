@@ -1,7 +1,7 @@
 NAME	=	push_swap
 BONUS	=	checker
 
-LIBFT_DIR	=	libft
+LIBFT_DIR	=	libs/libft
 SRCS_DIR	=	srcs
 INCS_DIR	=	includes
 
@@ -36,6 +36,15 @@ mandatory:	$(NAME)
 
 bonus:		$(BONUS)
 
+clean:
+	$(MAKE) -C $(LIBFT_DIR) fclean
+	$(RM) $(OBJS) $(OBJS_BONUS)
+
+fclean:	clean
+	$(RM) $(NAME) $(BONUS)
+
+re:	fclean all
+
 $(NAME):	$(OBJS) $(LIBFT)
 	$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT_DIR) -lft -o $@
 
@@ -44,3 +53,5 @@ $(BONUS):	$(OBJS_BONUS) $(LIBFT)
 
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
+
+.PHONY:	all clean fclean re mandatory bonus
