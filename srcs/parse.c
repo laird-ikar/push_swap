@@ -6,7 +6,7 @@
 /*   By: bguyot <bguyot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 09:31:07 by bguyot            #+#    #+#             */
-/*   Updated: 2023/07/06 10:57:42 by bguyot           ###   ########.fr       */
+/*   Updated: 2023/07/07 09:55:04 by bguyot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,13 @@ int	parse(int argc, char *argv[], t_list **stack_a)
 		if (list_include(*stack_a, n))
 			return (FT_ERR_DUPLICATE);
 		new_block = ft_calloc(1, sizeof (t_list));
-		new_block->content = (void *) n; //COMBAK: might need to allocate all the numbers, but pas super fan
-		ft_listadd_back(stack_a, new_block);
+		if (!new_block)
+			return (FT_ERR_ALLOCATION);
+		new_block->content = ft_calloc(1, sizeof (int));
+		if (!new_block->content)
+			return (FT_ERR_ALLOCATION);
+		*((int *) new_block->content) = n;
+		ft_lstadd_back(stack_a, new_block);
 	}
 	return (0);
 }
@@ -75,7 +80,7 @@ static int	list_include(t_list *list, int n)
 {
 	while (list)
 	{
-		if ((int) list->content == n)
+		if (*((int *) list->content) == n)
 			return (1);
 		list = list->next;
 	}
