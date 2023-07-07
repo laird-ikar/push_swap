@@ -6,25 +6,11 @@
 /*   By: bguyot <bguyot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 09:31:07 by bguyot            #+#    #+#             */
-/*   Updated: 2023/07/07 09:55:04 by bguyot           ###   ########.fr       */
+/*   Updated: 2023/07/07 10:36:13 by bguyot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/parse.h"
-
-/**
- *	@brief	Check if str is a valid representation of a integer
- *	@param	str	The string to test
- *	@return	1 if the string is valid, 0 if not
- */
-static int	is_number(char *str);
-/**
- *	@brief	Check if the list contains a number or not
- *	@param	list	The list to check
- *	@param	n		The number to check against
- *	@return	1 if n is in list, 0 if not
- */
-static int	list_include(t_list *list, int n);
 
 int	parse(int argc, char *argv[], t_list **stack_a)
 {
@@ -41,7 +27,7 @@ int	parse(int argc, char *argv[], t_list **stack_a)
 		new_block = ft_calloc(1, sizeof (t_list));
 		if (!new_block)
 			return (FT_ERR_ALLOCATION);
-		new_block->content = ft_calloc(1, sizeof (int));
+		new_block->content = ft_calloc(1, sizeof (long));
 		if (!new_block->content)
 			return (FT_ERR_ALLOCATION);
 		*((int *) new_block->content) = n;
