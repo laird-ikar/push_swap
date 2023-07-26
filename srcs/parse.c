@@ -6,7 +6,7 @@
 /*   By: bguyot <bguyot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 09:31:07 by bguyot            #+#    #+#             */
-/*   Updated: 2023/07/26 15:11:38 by bguyot           ###   ########.fr       */
+/*   Updated: 2023/07/26 15:21:05 by bguyot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,19 @@
  *	@param	str	The string to test
  *	@return	1 if the string is valid, 0 if not
  */
-static int is_number(char *str);
+static int	is_number(char *str);
 /**
  *	@brief	Check if the list contains a number or not
  *	@param	list	The list to check
  *	@param	n		The number to check against
  *	@return	1 if n is in list, 0 if not
  */
-static int list_include(t_list *list, int n);
+static int	list_include(t_list *list, int n);
 
-int parse(int argc, char *argv[], t_list **stack_a)
+int	parse(int argc, char *argv[], t_list **stack_a)
 {
-	int n;
-	t_list *new_block;
+	int		n;
+	t_list	*new_block;
 
 	while (--argc)
 	{
@@ -50,10 +50,10 @@ int parse(int argc, char *argv[], t_list **stack_a)
 	return (0);
 }
 
-static int is_number(char *str)
+static int	is_number(char *str)
 {
-	int nb_minus;
-	int nb_digit;
+	int	nb_minus;
+	int	nb_digit;
 
 	nb_digit = 0;
 	nb_minus = 0;
@@ -76,7 +76,7 @@ static int is_number(char *str)
 	return (1);
 }
 
-static int list_include(t_list *list, int n)
+static int	list_include(t_list *list, int n)
 {
 	while (list)
 	{
