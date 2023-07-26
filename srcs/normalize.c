@@ -6,17 +6,20 @@
 /*   By: bguyot <bguyot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 09:59:12 by bguyot            #+#    #+#             */
-/*   Updated: 2023/07/07 10:37:52 by bguyot           ###   ########.fr       */
+/*   Updated: 2023/07/26 15:12:09 by bguyot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/normalize.h"
 
-int	normalize(t_list **stack)
+static void shift_to_positive(t_list *lst);
+static t_list *find_smallest_greater(t_list *stack, long i);
+
+int normalize(t_list **stack)
 {
-	long	i;
-	long	size;
-	t_list	*local_smallest;
+	long i;
+	long size;
+	t_list *local_smallest;
 
 	i = 0;
 	size = ft_lstsize(*stack);
@@ -30,9 +33,9 @@ int	normalize(t_list **stack)
 	return (0);
 }
 
-static void	shift_to_positive(t_list *lst)
+static void shift_to_positive(t_list *lst)
 {
-	long	min;
+	long min;
 
 	min = ft_lstminint(lst);
 	while (lst)
@@ -42,17 +45,16 @@ static void	shift_to_positive(t_list *lst)
 	}
 }
 
-static t_list	*find_smallest_greater(t_list *stack, long i)
+static t_list *find_smallest_greater(t_list *stack, long i)
 {
-	t_list	*ret;
+	t_list *ret;
 
 	ret = stack;
 	while (stack)
 	{
-		if (*((long *) stack->content) < *((long *) ret->content)
-			&& *((long *) stack->content) >= i)
+		if (*((long *)stack->content) < *((long *)ret->content) && *((long *)stack->content) >= i)
 			ret = stack;
-		if (*((long *) ret->content) == i)
+		if (*((long *)ret->content) == i)
 			return (ret);
 		stack = stack->next;
 	}
