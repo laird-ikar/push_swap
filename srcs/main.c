@@ -6,7 +6,7 @@
 /*   By: bguyot <bguyot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 11:19:54 by bguyot            #+#    #+#             */
-/*   Updated: 2023/07/07 09:56:41 by bguyot           ###   ########.fr       */
+/*   Updated: 2023/07/26 17:52:02 by bguyot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,12 @@ int	main(int argc, char *argv[])
 	if (!push_swap.stack_a || !push_swap.stack_b || !push_swap.operations)
 		error(FT_ERR_ALLOCATION, push_swap);
 	err = parse(argc, argv, push_swap.stack_a);
+	if (err || !ft_lstsize(*push_swap.stack_a))
+		error(err, push_swap);
+	err = normalize(push_swap.stack_a);
 	if (err)
 		error(err, push_swap);
-	normalize(push_swap.stack_a);
-	ft_lstiter(*(push_swap.stack_a), print_value);
-	// push_swap.operations = sort(push_swap.stack_a, push_swap.stack_b);
+	push_swap.operations = sort(push_swap.stack_a, push_swap.stack_b);
 	// optimize(push_swap.operations);
 	// print(push_swap.operations);
 	tini(push_swap);

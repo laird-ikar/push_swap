@@ -11,7 +11,8 @@ FILES		=	\
 	init		\
 	normalize	\
 	optimize	\
-	parse
+	parse		\
+	sort
 INC_FILES	=	\
 	structures
 FILES_BONUS	=

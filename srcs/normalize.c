@@ -6,58 +6,67 @@
 /*   By: bguyot <bguyot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 09:59:12 by bguyot            #+#    #+#             */
-/*   Updated: 2023/07/26 15:25:48 by bguyot           ###   ########.fr       */
+/*   Updated: 2023/07/26 16:26:16 by bguyot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/normalize.h"
 
-static void		shift_to_positive(t_list *lst);
-static t_list	*find_smallest_greater(t_list *stack, long i);
+/**
+ *	@brief	Allocate a new long* that hold
+ */
+static long		*ft_longnew(long n);
+
+/**
+ *	@brief	Count the number of elements of the list stricly lower than n in lst
+ */
+static long		nb_smaller(long n, t_list *lst);
 
 int	normalize(t_list **stack)
 {
-	long	i;
-	long	size;
-	t_list	*local_smallest;
+	t_list	*stack_ptr;
+	t_list	*normalized_ptr;
+	t_list	*normalized;
 
-	i = 0;
-	size = ft_lstsize(*stack);
-	shift_to_positive(*stack);
-	while (i < size)
+	stack_ptr = (*stack)->next;
+	normalized = ft_lstnew(ft_longnew(nb_smaller(
+					*((long *)(*stack)->content), *stack)));
+	normalized_ptr = normalized;
+	if (!normalized_ptr)
+		return (ft_lstclear(&normalized, free), FT_ERR_ALLOCATION);
+	while (stack_ptr)
 	{
-		local_smallest = find_smallest_greater(*stack, i);
-		*((long *)local_smallest->content) = i;
-		i++;
+		normalized_ptr->next = ft_lstnew(ft_longnew(nb_smaller(
+						*((long *) stack_ptr->content), *stack)));
+		if (!normalized_ptr)
+			return (ft_lstclear(&normalized, free), FT_ERR_ALLOCATION);
+		stack_ptr = stack_ptr->next;
+		normalized_ptr = normalized_ptr->next;
 	}
+	ft_lstclear(stack, free);
+	*stack = normalized;
 	return (0);
 }
 
-static void	shift_to_positive(t_list *lst)
+static long	*ft_longnew(long n)
 {
-	long	min;
+	long	*ret;
 
-	min = ft_lstminint(lst);
-	while (lst)
-	{
-		*((long *)lst->content) -= min;
-		lst = lst->next;
-	}
+	ret = malloc(sizeof (long));
+	*ret = n;
+	return (ret);
 }
 
-static t_list	*find_smallest_greater(t_list *stack, long i)
+static long	nb_smaller(long n, t_list *lst)
 {
-	t_list	*ret;
+	long	ret;
 
-	ret = stack;
-	while (stack)
+	ret = 0;
+	while (lst)
 	{
-		if (*((long *)stack->content) < *((long *)ret->content)
-			&& *((long *)stack->content) >= i)
-			ret = stack;
-		if (*((long *)ret->content) == i)
-			return (ret);
-		stack = stack->next;
+		if (*((long *) lst->content) < n)
+			ret++;
+		lst = lst->next;
 	}
 	return (ret);
 }

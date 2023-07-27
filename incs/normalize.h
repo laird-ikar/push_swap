@@ -6,7 +6,7 @@
 /*   By: bguyot <bguyot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 10:00:05 by bguyot            #+#    #+#             */
-/*   Updated: 2023/07/26 15:26:11 by bguyot           ###   ########.fr       */
+/*   Updated: 2023/07/26 16:02:35 by bguyot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define NORMALIZE_H
 
 # include "../libs/libft/libft.h"
+# include "error.h"
 
 /**
  *	@brief	Replace the stack composed of n ints between INTMIN and INTMAX
