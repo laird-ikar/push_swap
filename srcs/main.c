@@ -6,7 +6,7 @@
 /*   By: bguyot <bguyot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 11:19:54 by bguyot            #+#    #+#             */
-/*   Updated: 2023/07/26 17:52:02 by bguyot           ###   ########.fr       */
+/*   Updated: 2023/07/30 17:35:33 by bguyot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	main(int argc, char *argv[])
 	t_pushswap	push_swap;
 
 	push_swap = init();
-	if (!push_swap.stack_a || !push_swap.stack_b || !push_swap.operations)
+	if (!push_swap.stack_a || !push_swap.operations)
 		error(FT_ERR_ALLOCATION, push_swap);
 	err = parse(argc, argv, push_swap.stack_a);
 	if (err || !ft_lstsize(*push_swap.stack_a))
@@ -40,9 +40,10 @@ int	main(int argc, char *argv[])
 	err = normalize(push_swap.stack_a);
 	if (err)
 		error(err, push_swap);
-	push_swap.operations = sort(push_swap.stack_a, push_swap.stack_b);
-	// optimize(push_swap.operations);
-	// print(push_swap.operations);
+	push_swap.operations = sort(push_swap.stack_a);
+	if (push_swap.operations == NULL)
+		error(FT_ERR_ALLOCATION, push_swap);
+	print(push_swap.operations);
 	tini(push_swap);
 	return (0);
 }

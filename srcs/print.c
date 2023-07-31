@@ -1,21 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort.h                                             :+:      :+:    :+:   */
+/*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bguyot <bguyot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/26 17:38:43 by bguyot            #+#    #+#             */
-/*   Updated: 2023/07/30 16:59:57 by bguyot           ###   ########.fr       */
+/*   Created: 2023/07/30 17:17:20 by bguyot            #+#    #+#             */
+/*   Updated: 2023/07/30 17:42:10 by bguyot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SORT_H
-# define SORT_H
+#include "../incs/print.h"
 
-# include "../libs/libft/libft.h"
-# include "structures.h"
+const char	g_oper_str[][3] = {
+[SA] = "sa",
+[SB] = "sb",
+[SS] = "ss",
+[PA] = "pa",
+[PB] = "pb",
+[RA] = "ra",
+[RB] = "rb",
+[RR] = "rr",
+[RRA] = "rra",
+[RRB] = "rrb",
+[RRR] = "rrr"
+};
 
-t_ps_list	**sort(t_list **stack_a);
+void	print(t_ps_list **oper)
+{
+	t_ps_list	*oper_tmp;
 
-#endif
+	oper_tmp = *oper;
+	while (oper_tmp)
+	{
+		ft_putendl_fd(g_oper_str[*(int *)(oper_tmp->content)], 1);
+		oper_tmp = oper_tmp->next;
+	}
+}

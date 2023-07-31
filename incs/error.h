@@ -6,7 +6,7 @@
 /*   By: bguyot <bguyot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 09:15:02 by bguyot            #+#    #+#             */
-/*   Updated: 2023/07/06 10:40:14 by bguyot           ###   ########.fr       */
+/*   Updated: 2023/07/30 17:38:45 by bguyot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,6 @@
 
 # include "structures.h"
 # include "init.h"
-
-enum	e_error_code
-{
-	FT_ERR_ALLOCATION = 1,
-	FT_ERR_NOT_A_INT = 2,
-	FT_ERR_DUPLICATE = 3
-};
 
 /**
  *	@brief	Print the error message, free push_swap and exit with code

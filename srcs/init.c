@@ -6,7 +6,7 @@
 /*   By: bguyot <bguyot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 10:43:59 by bguyot            #+#    #+#             */
-/*   Updated: 2023/07/06 09:13:11 by bguyot           ###   ########.fr       */
+/*   Updated: 2023/07/30 16:58:33 by bguyot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,14 @@ t_pushswap	init(void)
 
 	ft_bzero(&ret, sizeof(t_pushswap));
 	ret.stack_a = ft_calloc(1, sizeof(t_ps_list *));
-	ret.stack_b = ft_calloc(1, sizeof(t_ps_list *));
 	ret.operations = ft_calloc(1, sizeof(t_ps_list *));
 	return (ret);
 }
 
 void	tini(t_pushswap push_swap)
 {
-	ft_lstclear(push_swap.stack_a, free);
+	ft_lstclear(push_swap.operations, free);
 	free(push_swap.operations);
-	ft_lstclear(push_swap.stack_b, free);
+	ft_lstclear(push_swap.stack_a, free);
 	free(push_swap.stack_a);
-	ft_lstclear(push_swap.stack_b, free);
-	free(push_swap.stack_b);
 }
