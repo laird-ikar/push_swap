@@ -6,7 +6,7 @@
 /*   By: bguyot <bguyot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 11:19:54 by bguyot            #+#    #+#             */
-/*   Updated: 2023/07/30 17:35:33 by bguyot           ###   ########.fr       */
+/*   Updated: 2023/08/10 14:43:32 by bguyot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,33 @@ int	main(int argc, char *argv[])
 	if (push_swap.operations == NULL)
 		error(FT_ERR_ALLOCATION, push_swap);
 	print(push_swap.operations);
+	{
+		ft_printf("Initial A: ");
+		ft_lstiter(*push_swap.stack_a, print_value);
+		ft_printf("\nInitial B: ");
+		ft_lstiter(*push_swap.stack_b, print_value);
+
+		ft_printf("\n");
+		push(push_swap.stack_a, push_swap.stack_b);
+		ft_printf("\npa A: ");
+		ft_lstiter(*push_swap.stack_a, print_value);
+		ft_printf("\npa B: ");
+		ft_lstiter(*push_swap.stack_b, print_value);
+
+		ft_printf("\n");
+		push(push_swap.stack_b, push_swap.stack_a);
+		ft_printf("\npb A: ");
+		ft_lstiter(*push_swap.stack_a, print_value);
+		ft_printf("\npb B: ");
+		ft_lstiter(*push_swap.stack_b, print_value);
+
+		ft_printf("\n");
+		push(push_swap.stack_b, push_swap.stack_a);
+		ft_printf("\npb A: ");
+		ft_lstiter(*push_swap.stack_a, print_value);
+		ft_printf("\npb B: ");
+		ft_lstiter(*push_swap.stack_b, print_value);
+	}
 	tini(push_swap);
 	return (0);
 }

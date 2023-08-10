@@ -6,7 +6,7 @@
 /*   By: bguyot <bguyot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 17:28:23 by bguyot            #+#    #+#             */
-/*   Updated: 2023/07/30 17:32:40 by bguyot           ###   ########.fr       */
+/*   Updated: 2023/08/10 14:13:39 by bguyot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 
 # include "structures.h"
 
-void	print(t_ps_list **oper);
+void	print(t_list **oper);
 
 #endif

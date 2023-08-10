@@ -13,7 +13,8 @@ FILES		=	\
 	optimize	\
 	parse		\
 	sort		\
-	print
+	print		\
+	oper
 INC_FILES	=	\
 	structures
 FILES_BONUS	=

@@ -1,21 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort.h                                             :+:      :+:    :+:   */
+/*   oper.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bguyot <bguyot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/26 17:38:43 by bguyot            #+#    #+#             */
+/*   Created: 2023/08/10 14:00:14 by bguyot            #+#    #+#             */
 /*   Updated: 2023/08/10 14:13:39 by bguyot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SORT_H
-# define SORT_H
+#ifndef OPER_H
+# define OPER_H
 
-# include "../libs/libft/libft.h"
-# include "structures.h"
+# include "./structures.h"
 
-t_list	**sort(t_list **stack_a);
+/**
+ * @brief	Take the last element of a and push it to b
+ * @param	a	The first list
+ * @param	b	The second list
+ */
+void	push(t_list **a, t_list **b);
+
+/**
+ *	@brief	Swap the two last elements of a
+ *	@param	a	The list
+ */
+void	swap(t_list **a);
+
+/**
+ *	@brief	Rotate the list a in the sense specified
+ *	@param	a			The list
+ *	@param	is_reversed	The sense of rotation
+ */
+void	rota(t_list **a, int is_reversed);
 
 #endif

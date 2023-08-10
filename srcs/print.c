@@ -6,7 +6,7 @@
 /*   By: bguyot <bguyot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 17:17:20 by bguyot            #+#    #+#             */
-/*   Updated: 2023/07/30 17:42:10 by bguyot           ###   ########.fr       */
+/*   Updated: 2023/08/10 14:13:39 by bguyot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ const char	g_oper_str[][3] = {
 [RRR] = "rrr"
 };
 
-void	print(t_ps_list **oper)
+void	print(t_list **oper)
 {
-	t_ps_list	*oper_tmp;
+	t_list	*oper_tmp;
 
 	oper_tmp = *oper;
 	while (oper_tmp)
